@@ -1,9 +1,9 @@
 
 <<?php 
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "fobubase";
+$servername = "uso1.c7dhdhum783t.us-east-2.rds.amazonaws.com";
+$username = "mota";
+$password = "JavierRM1";
+$dbname = "USO_INTELIGENTE";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
