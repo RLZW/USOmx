@@ -120,7 +120,7 @@
 
 
 
-                    <div class="col-lg-6 col-md-12">
+                    <div class="col-lg-4 col-md-8">
                         <div class="card">
                             <div class="card-header card-header-warning">
                                 <h4 class="card-title">Proyectos Último Mes</h4>
@@ -147,7 +147,7 @@
                                                         <td>'.$f["ID"].'</td>
                                                         <td>'.$f["NOMBRE"].'</td>
                                                         <td>'.$f["PRESUPUESTO"].'</td>
-                                                        <td>'.$f["DIAGNOSTICO"].'</td>
+                                                        <td>'.$f["ESTADO"].'</td>
                                                         </tr>';
                                                 }
                                                 ?>    
@@ -157,7 +157,7 @@
                         </div>
 
                          <div class="card">
-                            <div class="card-header card-header">
+                            <div class="card-header card-header-success">
                                 <h4 class="card-title">CATEGORIAS</h4>
                                 <p class="card-category">Información Categorias</p>
                             </div>
