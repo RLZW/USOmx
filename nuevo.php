@@ -93,24 +93,24 @@
                                 </div>
                                 <div class="card-body">
                                    
-                                    <form>
+                                    <form action="" method= "post">
                                         <div class="row">
                                             <div class="col-md-5">
                                                 <div class="form-group">
-                                                    <label class="bmd-label-floating">Clave</label>
-                                                    <input type="text" id="nombreusuario"class="form-control" disabled>
+                                                    <label class="bmd-label-floating">ID</label>
+                                                    <input type="text" id="ID"class="form-control" disabled>
                                                 </div>
                                             </div>
                                             <div class="col-md-3">
                                                 <div class="form-group">
                                                     <label class="bmd-label-floating">Nombre</label>
-                                                    <input type="text" id="correo" class="form-control" disabled>
+                                                    <input type="text" id="NOM" class="form-control" disabled>
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label class="bmd-label-floating">Categoria</label>
-                                                    <input type="email" id="nombres" class="form-control" disabled>
+                                                    <input type="email" id="CAT" class="form-control" disabled>
                                                 </div>
                                             </div>
                                         </div>
@@ -118,13 +118,13 @@
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label class="bmd-label-floating">Objetivo</label>
-                                                    <input type="text" id="apellidop" class="form-control" disabled>
+                                                    <input type="text" id="OBJ" class="form-control" disabled>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label class="bmd-label-floating">Introducción</label>
-                                                    <input type="text" id="apellidom" class="form-control" disabled>
+                                                    <input type="text" id="INT" class="form-control" disabled>
                                                 </div>
                                             </div>
                                         </div>
@@ -132,7 +132,7 @@
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label class="bmd-label-floating">Presupuesto</label>
-                                                    <input type="text" id="direccion" class="form-control" disabled>
+                                                    <input type="text" id="PRE" class="form-control" disabled>
                                                 </div>
                                             </div>
                                         </div>
@@ -140,26 +140,40 @@
                                             <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label class="bmd-label-floating">Diagnostico</label>
-                                                    <input type="text" id="ciudad" class="form-control" disabled>
+                                                    <input type="text" id="DIA" class="form-control" disabled>
                                                 </div>
                                             </div>
                                             
                                         </div>
-                                        <button type="submit" class="btn btn-primary pull-right">ACTIVAR</button>
+                                        <button type="submit" class="btn btn-primary pull-right">AGREGAR</button>
                                         <div class="clearfix"></div>
                                     </form>
 
-                                    <script>
-                                        
-                                            document.getElementById('nombreusuario').value="";
-                                            document.getElementById('correo').value='';
-                                            document.getElementById('nombres').value='';
-                                            document.getElementById('apellidop').value='';
-                                            document.getElementById('apellidom').value='';
-                                            document.getElementById('direccion').value='';
-                                            document.getElementById('ciudad').value='';
-                                            document.getElementById('codigo').value='';        
-                                    </script>
+                                    <?php
+                                            if(isset($_POST["submit"])){
+
+                                                $mysqli = new mysqli("uso.c7dhdhum783t.us-east-2.rds.amazonaws.com", "mota", "JavierRM1", "USO_INTELIGENTE");
+                                                $mysqli->set_charset("utf8");
+                                                if ($mysqli->connect_errno) {
+                                                    echo "Fallo al conectar a MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
+                                                }
+                                                
+                                                $sql = "INSERT INTO PROYECTOS (ID, NOMBRE, CATEGORIA, OBJETIVO, INTRODUCCION, PRESUPUESTO, DIAGNOSTICO )
+                                                VALUES ('".$_POST["ID"]."','".$_POST["NOM"]."','".$_POST["CAT"]."','".$_POST["OBJ"]."','".$_POST["INT"]."','".$_POST["PRE"]."','".$_POST["DIA"]."')";
+
+                                                if ($conn->query($sql) === TRUE) {
+                                                    '<div class="alert alert-success" role="alert">
+                                                    Elemento creado con éxito
+                                                    </div>';
+                                                } else {
+                                                    echo  '<div class="alert alert-danger" role="alert">
+                                                    ¡Ups hubo un problema!
+                                                    </div>';
+                                                }
+
+                                                $mysqli->close();
+                                            }
+                                                ?>   
                                 </div>
                             </div>
                         </div>
