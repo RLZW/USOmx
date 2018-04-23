@@ -20,3 +20,5 @@ $pdo_statement_object->execute();
 $result = $pdo_statement_object->fetchAll();
 print_r($result);
 ?>
+
+</html>
