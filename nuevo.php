@@ -45,25 +45,25 @@
 
                 </li>
                     <li class="nav-item active ">
-                        <a class="nav-link" href="index.html">
+                        <a class="nav-link" href="index.php">
                             <i class="material-icons">dashboard</i> 
                             Dashboard
                         </a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="gastos.html">
+                        <a class="nav-link" href="proyectos.php">
                             <i class="material-icons">book</i>
                             <p>Proyectos</p>
                         </a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="usuario.html">
+                        <a class="nav-link" href="nuevo.php">
                             <i class="material-icons">note_add</i>
                             <p>Añadido de Proyectos</p>
                         </a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="tarjetas.html">
+                        <a class="nav-link" href="borrado.php">
                             <i class="material-icons">delete</i>
                             <p>Borrado de proyectos</p>
                         </a>
@@ -110,7 +110,7 @@
                                             <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label class="bmd-label-floating">Categoria</label>
-                                                    <input type="email" id="CAT" class="form-control" >
+                                                    <input type="text" id="CAT" class="form-control" >
                                                 </div>
                                             </div>
                                         </div>
