@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
    
 <head>
@@ -114,29 +113,25 @@
                                                 </th>
                                             </thead>
                                             <tbody>
-                                                    
-                                                <script>
-                                                    
-                                                    for(var i = 25; i >= 1; i--){
-                                                        var table = document.getElementById("tabla");
-                                                        var row = table.insertRow(1);
-                                                        var orden = row.insertCell(0);
-                                                        var concepto = row.insertCell(1);
-                                                        var estado = row.insertCell(2);
-                                                        var cuenta = row.insertCell(3);
-                                                        var monto = row.insertCell(4);
-                                                            
-                                                        orden.innerHTML = i;
-                                                        concepto.innerHTML = "PROYECTO ESCUELA";
-                                                        estado.innerHTML = "EN PROCESO";
-                                                        cuenta.innerHTML = "GUBERNAMENTAL";
-                                                        monto.innerHTML = "50000";
-                                                       
-                                                        
-
-                                                    }
-                                                </script>
-                                                
+                                                  
+                                                <?php
+                                                $mysqli = new mysqli("uso.c7dhdhum783t.us-east-2.rds.amazonaws.com", "mota", "JavierRM1", "USO_INTELIGENTE");
+                                                $mysqli->set_charset("utf8");
+                                                if ($mysqli->connect_errno) {
+                                                    echo "Fallo al conectar a MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
+                                                }
+                                                $res = $mysqli->query("SELECT * FROM PROYECTOS");
+                                                while($f = $res->fetch_assoc()){
+                                                    echo '<tr>
+                                                        <td>'.$f["ID"].'</td>
+                                                        <td>'.$f["NOMBRE"].'</td>
+                                                        <td>'.$f["OBJETIVO"].'</td>
+                                                        <td>'.$f["PRESUPUESTO"].'</td>
+                                                        <td>'.$f["DIAGNOSTICO"].'</td>
+                                                        </tr>';
+                                                }
+                                                ?>       
+                                               
                                             </tbody>
                                         </table>
                                     </div>
@@ -170,36 +165,3 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- -->
-
-</html>
