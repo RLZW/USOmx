@@ -98,19 +98,19 @@
                                             <div class="col-md-5">
                                                 <div class="form-group">
                                                     <label class="bmd-label-floating">ID</label>
-                                                    <input type="text" id="ID"class="form-control" >
+                                                    <input type="text" name="ID" id="ID"class="form-control" >
                                                 </div>
                                             </div>
                                             <div class="col-md-3">
                                                 <div class="form-group">
                                                     <label class="bmd-label-floating">Nombre</label>
-                                                    <input type="text" id="NOM" class="form-control" >
+                                                    <input type="text" name="NOM" id="NOM" class="form-control" >
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label class="bmd-label-floating">Categoria</label>
-                                                    <input type="text" id="CAT" class="form-control" >
+                                                    <input type="text" name="CAT" id="CAT" class="form-control" >
                                                 </div>
                                             </div>
                                         </div>
@@ -118,13 +118,13 @@
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label class="bmd-label-floating">Objetivo</label>
-                                                    <input type="text" id="OBJ" class="form-control" >
+                                                    <input type="text" name="OBJ" id="OBJ" class="form-control" >
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label class="bmd-label-floating">Introducción</label>
-                                                    <input type="text" id="INT" class="form-control" >
+                                                    <input type="text" name="INT" id="INT" class="form-control" >
                                                 </div>
                                             </div>
                                         </div>
@@ -132,7 +132,7 @@
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label class="bmd-label-floating">Presupuesto</label>
-                                                    <input type="text" id="PRE" class="form-control" >
+                                                    <input type="text" name="PRE" id="PRE" class="form-control" >
                                                 </div>
                                             </div>
                                         </div>
@@ -140,12 +140,12 @@
                                             <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label class="bmd-label-floating">Diagnostico</label>
-                                                    <input type="text" id="DIA" class="form-control" >
+                                                    <input type="text" name="DIA" id="DIA" class="form-control" >
                                                 </div>
                                             </div>
                                             
                                         </div>
-                                        <button type="submit" class="btn btn-primary pull-right">AGREGAR</button>
+                                        <button name="submit" type="submit" class="btn btn-primary pull-right">AGREGAR</button>
                                         <div class="clearfix"></div>
                                     </form>
 
