@@ -98,19 +98,19 @@
                                             <div class="col-md-5">
                                                 <div class="form-group">
                                                     <label class="bmd-label-floating">ID</label>
-                                                    <input type="text" id="ID"class="form-control" disabled>
+                                                    <input type="text" id="ID"class="form-control" >
                                                 </div>
                                             </div>
                                             <div class="col-md-3">
                                                 <div class="form-group">
                                                     <label class="bmd-label-floating">Nombre</label>
-                                                    <input type="text" id="NOM" class="form-control" disabled>
+                                                    <input type="text" id="NOM" class="form-control" >
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label class="bmd-label-floating">Categoria</label>
-                                                    <input type="email" id="CAT" class="form-control" disabled>
+                                                    <input type="email" id="CAT" class="form-control" >
                                                 </div>
                                             </div>
                                         </div>
@@ -118,13 +118,13 @@
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label class="bmd-label-floating">Objetivo</label>
-                                                    <input type="text" id="OBJ" class="form-control" disabled>
+                                                    <input type="text" id="OBJ" class="form-control" >
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label class="bmd-label-floating">Introducción</label>
-                                                    <input type="text" id="INT" class="form-control" disabled>
+                                                    <input type="text" id="INT" class="form-control" >
                                                 </div>
                                             </div>
                                         </div>
@@ -132,7 +132,7 @@
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label class="bmd-label-floating">Presupuesto</label>
-                                                    <input type="text" id="PRE" class="form-control" disabled>
+                                                    <input type="text" id="PRE" class="form-control" >
                                                 </div>
                                             </div>
                                         </div>
@@ -140,7 +140,7 @@
                                             <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label class="bmd-label-floating">Diagnostico</label>
-                                                    <input type="text" id="DIA" class="form-control" disabled>
+                                                    <input type="text" id="DIA" class="form-control" >
                                                 </div>
                                             </div>
                                             
@@ -180,8 +180,7 @@
                     </div>
                 </div>
             </div>
-            <footer class="footer ">
-                
+            <footer class="footer ">    
             </footer>
         </div>
     </div>
