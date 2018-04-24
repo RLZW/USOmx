@@ -6,18 +6,18 @@
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <!-- Favicons -->
-    <link rel="apple-touch-icon" href="../assets/img/apple-icon.png">
-    <link rel="icon" href="../assets/img/favicon.png">
+    <link rel="apple-touch-icon" href="assets/img/apple-icon.png">
+    <link rel="icon" href="assets/img/favicon.png">
     <title>
         USO INTELIGENTE
     </title>
     <!--     Fonts and icons     -->
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
-    <link rel="stylesheet" href="../assets/css/material-dashboard.css?v=2.0.0">
+    <link rel="stylesheet" href="assets/css/material-dashboard.css?v=2.0.0">
     <!-- Documentation extras -->
     <!-- CSS Just for demo purpose, don't include it in your project -->
-    <link href="../assets/assets-for-demo/demo.css" rel="stylesheet" />
+    <link href="assets/assets-for-demo/demo.css" rel="stylesheet" />
     <!-- iframe removal -->
 </head>
 
@@ -30,11 +30,11 @@
         Tip 2: you can also add an image using data-image tag
     -->
     <div class="logo">
-                
+
             <center>
-                    <img src="/images/SC logo chico.png" border="0" width="50%" height="50%">
+                    <img src="images/SC logo chico.png" border="0" width="50%" height="50%">
             </center>
-                
+
             </div>
             <div class="sidebar-wrapper">
                 <ul class="nav">
@@ -46,7 +46,7 @@
                 </li>
                     <li class="nav-item active ">
                         <a class="nav-link" href="index.php">
-                            <i class="material-icons">dashboard</i> 
+                            <i class="material-icons">dashboard</i>
                             Dashboard
                         </a>
                     </li>
@@ -68,7 +68,7 @@
                             <p>Borrado de proyectos</p>
                         </a>
                     </li>
-                   
+
                 </ul>
             </div>
         </div>
@@ -78,7 +78,7 @@
                 <div class="container-fluid">
                     <div class="navbar-wrapper">
                         <a class="navbar-brand" href="#pablo">Añadido de Proyecto</a>
-                   
+
                 </div>
             </nav>
             <!-- End Navbar -->
@@ -89,10 +89,10 @@
                             <div class="card">
                                 <div class="card-header card-header-primary">
                                     <h4 class="card-title">Nuevo Proyecto + </h4>
-                                    
+
                                 </div>
                                 <div class="card-body">
-                                   
+
                                     <form action="" method= "post">
                                         <div class="row">
                                             <div class="col-md-5">
@@ -143,25 +143,25 @@
                                                     <input type="text" name="DIA" id="DIA" class="form-control" >
                                                 </div>
                                             </div>
-                                            
+
                                         </div>
                                         <button name="submit" type="submit" class="btn btn-primary pull-right">AGREGAR</button>
                                         <div class="clearfix"></div>
                                     </form>
 
                                     <?php
-                                            if(isset($_POST["submit"])){
+                                            if(isset($_POST["submit"]) && isset($_POST["ID"])&&isset($_POST["NOM"])&&isset($_POST["CAT"])&&isset($_POST["OBJ"])&&isset($_POST["INT"])&&isset($_POST["PRE"])&&isset($_POST["DIA"])){
 
                                                 $mysqli = new mysqli("uso.c7dhdhum783t.us-east-2.rds.amazonaws.com", "mota", "JavierRM1", "USO_INTELIGENTE");
                                                 $mysqli->set_charset("utf8");
                                                 if ($mysqli->connect_errno) {
                                                     echo "Fallo al conectar a MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
                                                 }
-                                                
+
                                                 $sql = "INSERT INTO PROYECTOS (ID, NOMBRE, CATEGORIA, OBJETIVO, INTRODUCCION, PRESUPUESTO, DIAGNOSTICO )
                                                 VALUES ('".$_POST["ID"]."','".$_POST["NOM"]."','".$_POST["CAT"]."','".$_POST["OBJ"]."','".$_POST["INT"]."','".$_POST["PRE"]."','".$_POST["DIA"]."')";
 
-                                                if ($conn->query($sql) === TRUE) {
+                                                if ($mysqli->query($sql)) {
                                                     '<div class="alert alert-success" role="alert">
                                                     Elemento creado con éxito
                                                     </div>';
@@ -173,33 +173,33 @@
 
                                                 $mysqli->close();
                                             }
-                                                ?>   
+                                                ?>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <footer class="footer ">    
+            <footer class="footer ">
             </footer>
         </div>
     </div>
 </body>
 <!--   Core JS Files   -->
-<script src="../assets/js/core/jquery.min.js"></script>
-<script src="../assets/js/core/popper.min.js"></script>
-<script src="../assets/js/bootstrap-material-design.js"></script>
-<script src="../assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+<script src="assets/js/core/jquery.min.js"></script>
+<script src="assets/js/core/popper.min.js"></script>
+<script src="assets/js/bootstrap-material-design.js"></script>
+<script src="assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
 <!--  Charts Plugin, full documentation here: https://gionkunz.github.io/chartist-js/ -->
-<script src="../assets/js/plugins/chartist.min.js"></script>
+<script src="assets/js/plugins/chartist.min.js"></script>
 <!-- Library for adding dinamically elements -->
-<script src="../assets/js/plugins/arrive.min.js" type="text/javascript"></script>
+<script src="assets/js/plugins/arrive.min.js" type="text/javascript"></script>
 <!--  Notifications Plugin, full documentation here: http://bootstrap-notify.remabledesigns.com/    -->
-<script src="../assets/js/plugins/bootstrap-notify.js"></script>
+<script src="assets/js/plugins/bootstrap-notify.js"></script>
 <!-- Material Dashboard Core initialisations of plugins and Bootstrap Material Design Library -->
-<script src="../assets/js/material-dashboard.js?v=2.0.0"></script>
+<script src="assets/js/material-dashboard.js?v=2.0.0"></script>
 <!-- demo init -->
-<script src="../assets/js/plugins/demo.js"></script>
+<script src="assets/js/plugins/demo.js"></script>
 <!--
 
 
