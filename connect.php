@@ -1,8 +1,8 @@
 <?php
-$server = "uso.c7dhdhum783t.us-east-2.rds.amazonaws.com";
-$username = "mota";
-$password = "JavierRM1";
-$database = "USO_INTELIGENTE";
+$server = "Nullpointer.com.mx";
+$username = "USO_INTELIGENTE";
+$password = "USO_INTELIGENTE";
+$database = "NP_USO_INTELIGENTE";
 
 // Conectar
 $connection = new mysqli($server, $username, $password,$database);
