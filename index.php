@@ -29,14 +29,14 @@ require('connect.php');
 
         Tip 2: you can also add an image using data-image tag
     -->
-            <div class="logo">
+        <div class="logo">
 
           <center>
                   <img src="images/SC logo chico.png" border="0" width="50%">
           </center>
 
 
-            </div>
+        </div>
             <div class="sidebar-wrapper">
                 <ul class="nav">
                   <li clas"">
@@ -110,7 +110,7 @@ require('connect.php');
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
                                     <a class="dropdown-item" href="#">Verificar proyecto iStudy</a>
                                     <a class="dropdown-item" href="#">3 proyectos cambiaron su estado a completado</a>
-                                    <a class="dropdown-item" href="#">Se canceló HackMx</a>
+                                    <a class="dropdown-item" href="#">Se canceló HackMx</a>+
                                     <a class="dropdown-item" href="#">El proyecto está a punto de agotar su presupuesto</a>
 
                                 </div>
@@ -121,129 +121,314 @@ require('connect.php');
                 </div>
             </nav>
             <!-- End Navbar -->
+            
+            
+            <!-- Contenido  -->
             <div class="content">
                 <div class="container-fluid">
-                    <div class="row">
-<?php
-$queryUltimoMes = $connection->query('SELECT DISTINCT * FROM UltimoMes');
-if($queryUltimoMes->num_rows!=0)
-{
-?>
-                        <div class="col-lg-6 col-md-12">
-                            <div class="card">
-                                <div class="card-header card-header-warning">
-                                    <h4 class="card-title">Estado de proyectos</h4>
-                                    <p class="card-category">Proyectos del último mes</p>
-                                </div>
-                                <div class="card-body table-responsive">
-                                    <table class="table table-hover">
-                                        <thead class="text-warning">
-                                            <th>Clave</th>
-                                            <th>Nombre</th>
-                                            <th>Categorías</th>
-                                            <th>Presupuesto</th>
-                                            <th>Estado</th>
-                                        </thead>
-                                        <tbody>
-                                          <?php
-                                          while($filaUltimoMes = $queryUltimoMes->fetch_assoc())
-                                          {
-                                          ?>
-                                            <tr>
-                                                <td><?php echo $filaUltimoMes['ID']; ?></td>
-                                                <td><?php echo $filaUltimoMes['NOMBRE']; ?></td>
-                                                <td><?php
-                                                  $categoriaProyectoQuery = $connection->query('SELECT CATEGORIAS.NOMBRE FROM CATEGORIA_PROYECTO INNER JOIN CATEGORIAS ON CATEGORIA_PROYECTO.CATEGORIA = CATEGORIAS.ID WHERE CATEGORIA_PROYECTO.PROYECTO = '.$filaUltimoMes['ID']);
-                                                  if($categoriaProyectoQuery->num_rows!=0)
-                                                  {
-                                                    while($filaCategoriaProyecto = $categoriaProyectoQuery->fetch_assoc())
-                                                    {
-                                                      echo $filaCategoriaProyecto['NOMBRE'];
-                                                      echo "<br/>";
-                                                    }
-                                                  }
-                                                  else
-                                                  {
-                                                    echo "SIN CATEGORIA";
-                                                  }
-                                                 ?></td>
-                                                <td><?php echo $filaUltimoMes['PRESUPUESTO']; ?></td>
-                                                <td><?php switch($filaUltimoMes['ESTADO'])
-                                                {
-                                                  case 'EPC':
-                                                  echo "En proceso";
-                                                  break;
-                                                  case 'COM':
-                                                  echo "Completado";
-                                                  break;
-                                                  case 'CAN':
-                                                  echo "Cancelado";
-                                                  break;
-
-
-                                                } ?></td>
-                                            </tr>
-
-
-                        <?php
-                        }
-                        ?>
-                      </tbody>
-                  </table>
-              </div>
-          </div>
-      </div>
-                        <?php
-                      }
-                        ?>
-                        <?php
-                        $categoriasQuery = $connection->query("SELECT * FROM CATEGORIAS");
-                        if($categoriasQuery->num_rows!=0)
-                        {
-                          ?>
-                          <div class="col-lg-6 col-md-12">
-                            <div class="card">
-                                <div class="card-header card-header-success">
-                                    <h4 class="card-title">CATEGORIAS</h4>
-                                    <p class="card-category">Información Categorias</p>
-                                </div>
-                                <div class="card-body table-responsive">
-                                    <table class="table table-hover">
-                                        <thead class="text">
-                                            <th>ID</th>
-                                            <th>Nombre</th>
-                                        </thead>
-                                        <tbody>
-                                        <?php
-
-                                                    while($filaCategorias = $categoriasQuery->fetch_assoc()){
-                                                      ?>
-                                                      <tr>
-                                                          <td><?php echo $filaCategorias['ID']; ?></td>
-                                                          <td><?php echo $filaCategorias['NOMBRE']; ?></td>
-                                                        </tr>
-                                                      <?php
-
-                                                    }
-                                        ?>
-                                        </tbody>
-                                    </table>
+                    <div class="row"> <!-- ROW -->
+                            <div class="col-md-4">
+                                <div class="card card-chart">
+                                    <div class="card-header card-header-success">
+                                        <div class="ct-chart" id="dailySalesChart"><svg xmlns:ct="http://gionkunz.github.com/chartist-js/ct" width="100%" height="100%" class="ct-chart-line" style="width: 100%; height: 100%;"><g class="ct-grids"><line x1="40" x2="40" y1="0" y2="120" class="ct-grid ct-horizontal"></line><line x1="51.90401785714286" x2="51.90401785714286" y1="0" y2="120" class="ct-grid ct-horizontal"></line><line x1="63.808035714285715" x2="63.808035714285715" y1="0" y2="120" class="ct-grid ct-horizontal"></line><line x1="75.71205357142857" x2="75.71205357142857" y1="0" y2="120" class="ct-grid ct-horizontal"></line><line x1="87.61607142857143" x2="87.61607142857143" y1="0" y2="120" class="ct-grid ct-horizontal"></line><line x1="99.52008928571429" x2="99.52008928571429" y1="0" y2="120" class="ct-grid ct-horizontal"></line><line x1="111.42410714285714" x2="111.42410714285714" y1="0" y2="120" class="ct-grid ct-horizontal"></line><line y1="120" y2="120" x1="40" x2="123.328125" class="ct-grid ct-vertical"></line><line y1="96" y2="96" x1="40" x2="123.328125" class="ct-grid ct-vertical"></line><line y1="72" y2="72" x1="40" x2="123.328125" class="ct-grid ct-vertical"></line><line y1="48" y2="48" x1="40" x2="123.328125" class="ct-grid ct-vertical"></line><line y1="24" y2="24" x1="40" x2="123.328125" class="ct-grid ct-vertical"></line><line y1="0" y2="0" x1="40" x2="123.328125" class="ct-grid ct-vertical"></line></g><g><g class="ct-series ct-series-a"><path d="M40,91.2C51.904,79.2,51.904,79.2,51.904,79.2C63.808,103.2,63.808,103.2,63.808,103.2C75.712,79.2,75.712,79.2,75.712,79.2C87.616,64.8,87.616,64.8,87.616,64.8C99.52,76.8,99.52,76.8,99.52,76.8C111.424,28.8,111.424,28.8,111.424,28.8" class="ct-line"></path><line x1="40" y1="91.2" x2="40.01" y2="91.2" class="ct-point" ct:value="12"></line><line x1="51.90401785714286" y1="79.2" x2="51.91401785714286" y2="79.2" class="ct-point" ct:value="17"></line><line x1="63.808035714285715" y1="103.2" x2="63.81803571428571" y2="103.2" class="ct-point" ct:value="7"></line><line x1="75.71205357142857" y1="79.2" x2="75.72205357142857" y2="79.2" class="ct-point" ct:value="17"></line><line x1="87.61607142857143" y1="64.8" x2="87.62607142857144" y2="64.8" class="ct-point" ct:value="23"></line><line x1="99.52008928571429" y1="76.8" x2="99.5300892857143" y2="76.8" class="ct-point" ct:value="18"></line><line x1="111.42410714285714" y1="28.799999999999997" x2="111.43410714285714" y2="28.799999999999997" class="ct-point" ct:value="38"></line></g></g><g class="ct-labels"><foreignObject style="overflow: visible;" x="40" y="125" width="11.904017857142858" height="20"><span class="ct-label ct-horizontal ct-end" xmlns="http://www.w3.org/2000/xmlns/" style="width: 12px; height: 20px;">M</span></foreignObject><foreignObject style="overflow: visible;" x="51.90401785714286" y="125" width="11.904017857142858" height="20"><span class="ct-label ct-horizontal ct-end" xmlns="http://www.w3.org/2000/xmlns/" style="width: 12px; height: 20px;">T</span></foreignObject><foreignObject style="overflow: visible;" x="63.808035714285715" y="125" width="11.904017857142854" height="20"><span class="ct-label ct-horizontal ct-end" xmlns="http://www.w3.org/2000/xmlns/" style="width: 12px; height: 20px;">W</span></foreignObject><foreignObject style="overflow: visible;" x="75.71205357142857" y="125" width="11.904017857142861" height="20"><span class="ct-label ct-horizontal ct-end" xmlns="http://www.w3.org/2000/xmlns/" style="width: 12px; height: 20px;">T</span></foreignObject><foreignObject style="overflow: visible;" x="87.61607142857143" y="125" width="11.904017857142861" height="20"><span class="ct-label ct-horizontal ct-end" xmlns="http://www.w3.org/2000/xmlns/" style="width: 12px; height: 20px;">F</span></foreignObject><foreignObject style="overflow: visible;" x="99.52008928571429" y="125" width="11.904017857142847" height="20"><span class="ct-label ct-horizontal ct-end" xmlns="http://www.w3.org/2000/xmlns/" style="width: 12px; height: 20px;">S</span></foreignObject><foreignObject style="overflow: visible;" x="111.42410714285714" y="125" width="30" height="20"><span class="ct-label ct-horizontal ct-end" xmlns="http://www.w3.org/2000/xmlns/" style="width: 30px; height: 20px;">S</span></foreignObject><foreignObject style="overflow: visible;" y="96" x="0" height="24" width="30"><span class="ct-label ct-vertical ct-start" xmlns="http://www.w3.org/2000/xmlns/" style="height: 24px; width: 30px;">0</span></foreignObject><foreignObject style="overflow: visible;" y="72" x="0" height="24" width="30"><span class="ct-label ct-vertical ct-start" xmlns="http://www.w3.org/2000/xmlns/" style="height: 24px; width: 30px;">10</span></foreignObject><foreignObject style="overflow: visible;" y="48" x="0" height="24" width="30"><span class="ct-label ct-vertical ct-start" xmlns="http://www.w3.org/2000/xmlns/" style="height: 24px; width: 30px;">20</span></foreignObject><foreignObject style="overflow: visible;" y="24" x="0" height="24" width="30"><span class="ct-label ct-vertical ct-start" xmlns="http://www.w3.org/2000/xmlns/" style="height: 24px; width: 30px;">30</span></foreignObject><foreignObject style="overflow: visible;" y="0" x="0" height="24" width="30"><span class="ct-label ct-vertical ct-start" xmlns="http://www.w3.org/2000/xmlns/" style="height: 24px; width: 30px;">40</span></foreignObject><foreignObject style="overflow: visible;" y="-30" x="0" height="30" width="30"><span class="ct-label ct-vertical ct-start" xmlns="http://www.w3.org/2000/xmlns/" style="height: 30px; width: 30px;">50</span></foreignObject></g></svg></div>
+                                    </div>
+                                    <div class="card-body">
+                                        <h4 class="card-title">Daily Sales</h4>
+                                        <p class="card-category">
+                                            <span class="text-success"><i class="fa fa-long-arrow-up"></i> 55% </span> increase in today sales.</p>
+                                    </div>
+                                    <div class="card-footer">
+                                        <div class="stats">
+                                            <i class="material-icons">access_time</i> updated 4 minutes ago
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                          </div>
-                          <?php
+                            <div class="col-md-4">
+                                <div class="card card-chart">
+                                    <div class="card-header card-header-warning">
+                                        <div class="ct-chart" id="websiteViewsChart"></div>
+                                    </div>
+                                    <div class="card-body">
+                                        <h4 class="card-title">Email Subscriptions</h4>
+                                        <p class="card-category">Last Campaign Performance</p>
+                                    </div>
+                                    <div class="card-footer">
+                                        <div class="stats">
+                                            <i class="material-icons">access_time</i> campaign sent 2 days ago
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card card-chart">
+                                    <div class="card-header card-header-danger">
+                                        <div class="ct-chart" id="completedTasksChart"></div>
+                                    </div>
+                                    <div class="card-body">
+                                        <h4 class="card-title">Completed Tasks</h4>
+                                        <p class="card-category">Last Campaign Performance</p>
+                                    </div>
+                                    <div class="card-footer">
+                                        <div class="stats">
+                                            <i class="material-icons">access_time</i> campaign sent 2 days ago
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    </div> <!-- END ROW -->
+                    
 
-                        }
+                    <div class="row"> <!-- ROW -->
+
+                    <!-- ESTADO PROYECTOS CHART MES -->
+                        <?php
+                            $queryUltimoMes = $connection->query('SELECT DISTINCT * FROM UltimoMes');
+                            if($queryUltimoMes->num_rows!=0)
+                            {
+                            ?>
+                            <div class="col-lg-6 col-md-12">
+                                <div class="card">
+                                    <div class="card-header card-header-warning">
+                                        <h4 class="card-title">Estado de proyectos</h4>
+                                        <p class="card-category">Proyectos del último mes</p>
+                                    </div>
+                                    <div class="card-body table-responsive">
+                                        <table class="table table-hover">
+                                            <thead class="text-warning">
+                                                <th>Clave</th>
+                                                <th>Nombre</th>
+                                                <th>Categorías</th>
+                                                <th>Presupuesto</th>
+                                                <th>Estado</th>
+                                            </thead>
+                                            <tbody>
+                                            <?php
+                                            while($filaUltimoMes = $queryUltimoMes->fetch_assoc())
+                                            {
+                                            ?>
+                                                <tr>
+                                                    <td><?php echo $filaUltimoMes['ID']; ?></td>
+                                                    <td><?php echo $filaUltimoMes['NOMBRE']; ?></td>
+                                                    <td><?php
+                                                    $categoriaProyectoQuery = $connection->query('SELECT CATEGORIAS.NOMBRE FROM CATEGORIA_PROYECTO INNER JOIN CATEGORIAS ON CATEGORIA_PROYECTO.CATEGORIA = CATEGORIAS.ID WHERE CATEGORIA_PROYECTO.PROYECTO = '.$filaUltimoMes['ID']);
+                                                    if($categoriaProyectoQuery->num_rows!=0)
+                                                    {
+                                                        while($filaCategoriaProyecto = $categoriaProyectoQuery->fetch_assoc())
+                                                        {
+                                                        echo $filaCategoriaProyecto['NOMBRE'];
+                                                        echo "<br/>";
+                                                        }
+                                                    }
+                                                    else
+                                                    {
+                                                        echo "SIN CATEGORIA";
+                                                    }
+                                                    ?></td>
+                                                    <td><?php echo $filaUltimoMes['PRESUPUESTO']; ?></td>
+                                                    <td><?php switch($filaUltimoMes['ESTADO'])
+                                                    {
+                                                    case 'EPC':
+                                                    echo "En proceso";
+                                                    break;
+                                                    case 'COM':
+                                                    echo "Completado";
+                                                    break;
+                                                    case 'CAN':
+                                                    echo "Cancelado";
+                                                    break;
+
+
+                                                    } ?></td>
+                                                </tr>
+
+
+                                            <?php
+                                            }
+                                            ?>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div> <!-- END CLASS CARD -->
+                                
+                            
+                            </div> <!-- END COL -->
+                            
+                        <?php
+                            }
                         ?>
+                    
+                     <!-- ESTADO PROYECTOS CHART SEMANA -->
+                        <?php
+                            $queryUltimoMes = $connection->query('SELECT DISTINCT * FROM UltimoMes');
+                            if($queryUltimoMes->num_rows!=0)
+                            {
+                            ?>
+                            <div class="col-lg-6 col-md-12">
+                                <div class="card">
+                                    <div class="card-header card-header-success">
+                                        <h4 class="card-title">Estado de proyectos</h4>
+                                        <p class="card-category">Proyectos de la semana</p>
+                                    </div>
+                                    <div class="card-body table-responsive">
+                                        <table class="table table-hover">
+                                            <thead class="text-warning">
+                                                <th>Clave</th>
+                                                <th>Nombre</th>
+                                                <th>Categorías</th>
+                                                <th>Presupuesto</th>
+                                                <th>Estado</th>
+                                            </thead>
+                                            <tbody>
+                                            <?php
+                                            while($filaUltimoMes = $queryUltimoMes->fetch_assoc())
+                                            {
+                                            ?>
+                                                <tr>
+                                                    <td><?php echo $filaUltimoMes['ID']; ?></td>
+                                                    <td><?php echo $filaUltimoMes['NOMBRE']; ?></td>
+                                                    <td><?php
+                                                    $categoriaProyectoQuery = $connection->query('SELECT CATEGORIAS.NOMBRE FROM CATEGORIA_PROYECTO INNER JOIN CATEGORIAS ON CATEGORIA_PROYECTO.CATEGORIA = CATEGORIAS.ID WHERE CATEGORIA_PROYECTO.PROYECTO = '.$filaUltimoMes['ID']);
+                                                    if($categoriaProyectoQuery->num_rows!=0)
+                                                    {
+                                                        while($filaCategoriaProyecto = $categoriaProyectoQuery->fetch_assoc())
+                                                        {
+                                                        echo $filaCategoriaProyecto['NOMBRE'];
+                                                        echo "<br/>";
+                                                        }
+                                                    }
+                                                    else
+                                                    {
+                                                        echo "SIN CATEGORIA";
+                                                    }
+                                                    ?></td>
+                                                    <td><?php echo $filaUltimoMes['PRESUPUESTO']; ?></td>
+                                                    <td><?php switch($filaUltimoMes['ESTADO'])
+                                                    {
+                                                    case 'EPC':
+                                                    echo "En proceso";
+                                                    break;
+                                                    case 'COM':
+                                                    echo "Completado";
+                                                    break;
+                                                    case 'CAN':
+                                                    echo "Cancelado";
+                                                    break;
 
 
-                    </div>
-                    </div>
-                </div>
-            </div>
+                                                    } ?></td>
+                                                </tr>
 
-        </div>
-    </div>
+
+                                            <?php
+                                            }
+                                            ?>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div> <!-- END CLASS CARD -->
+                                
+                            
+                            </div> <!-- END COL -->
+                            
+                        <?php
+                            }
+                        ?>
+                    </div>  <!-- END ROW -->
+
+
+
+                    <div class"row"> <!-- ROW -->
+                        <!-- CATEGORIAS CHART --> 
+                            <?php
+                                    $categoriasQuery = $connection->query("SELECT * FROM CATEGORIAS");
+                                    if($categoriasQuery->num_rows!=0)
+                                    {
+                                    ?>
+                                    <div class="col-lg-6 col-md-12">
+                                        <div class="card">
+                                            <div class="card-header card-header-success">
+                                                <h4 class="card-title">CATEGORIAS</h4>
+                                                <p class="card-category">Información Categorias</p>
+                                            </div>
+                                            <div class="card-body table-responsive">
+                                                <table class="table table-hover">
+                                                    <thead class="text">
+                                                        <th>ID</th>
+                                                        <th>Nombre</th>
+                                                    </thead>
+                                                    <tbody>
+                                                    <?php
+
+                                                                while($filaCategorias = $categoriasQuery->fetch_assoc()){
+                                                                ?>
+                                                                <tr>
+                                                                    <td><?php echo $filaCategorias['ID']; ?></td>
+                                                                    <td><?php echo $filaCategorias['NOMBRE']; ?></td>
+                                                                    </tr>
+                                                                <?php
+
+                                                                }
+                                                    ?>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                            <?php
+                                }
+                            ?>
+
+                    
+                        
+                        <!-- CATEGORIAS CHART -->
+                            <?php
+                                $categoriasQuery = $connection->query("SELECT * FROM CATEGORIAS");
+                                if($categoriasQuery->num_rows!=0)
+                                {
+                                ?>
+                                    <div class="col-lg-6 col-md-12">
+                                        <div class="card">
+                                            <div class="card-header card-header-success">
+                                                <h4 class="card-title">CATEGORIAS</h4>
+                                                <p class="card-category">Información Categorias</p>
+                                            </div>
+                                            <div class="card-body table-responsive">
+                                                <table class="table table-hover">
+                                                    <thead class="text">
+                                                        <th>ID</th>
+                                                        <th>Nombre</th>
+                                                    </thead>
+                                                    <tbody>
+                                                    <?php
+                                                            while($filaCategorias = $categoriasQuery->fetch_assoc()){
+                                                            ?>
+                                                            <tr>
+                                                                <td><?php echo $filaCategorias['ID']; ?></td>
+                                                                <td><?php echo $filaCategorias['NOMBRE']; ?></td>
+                                                                </tr>
+                                                            <?php
+
+                                                            }
+                                                    ?>
+                                                    </tbody>
+                                            </table>
+                                        </div>
+                                        </div>
+                                </div>
+                                
+                                <?php
+                                }
+                                ?>
+                    </div>  <!-- END ROW -->
+
+                </div> <!-- END CONTAINER -->
+                
+            </div> <!-- END CONTENT -->
+
+        </div> <!-- END MAIN PANEL -->
+    </div> <!-- END WRAPPER -->
+    
 </body>
 <!--   Core JS Files   -->
 <script src="assets/js/core/jquery.min.js"></script>
